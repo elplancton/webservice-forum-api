@@ -4,13 +4,13 @@
 
 ### Descrição
 
-A finalidade desse serviço é ser uma simples plataforma de chat em grupos, onde um usuário cadastrado pode enviar mensagens dentro de uma grupo e outros usuários poderão ver.
+A finalidade desse serviço é ser uma simples plataforma de chat em grupos, onde um usuário cadastrado pode enviar mensagens dentro de um grupo e outros usuários poderão ver.
 
 ### Como iniciar
 
 Para instalar execute o comando `npm install` na pasta.
 
-Para iniciar o projeto rode o comando npm start.
+Para iniciar o projeto rode o comando `npm start`.
 
 Está sendo usado um banco SQLite, não há necessidade de implantar nada.
 
