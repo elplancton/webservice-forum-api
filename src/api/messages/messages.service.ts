@@ -15,7 +15,10 @@ export class MessagesService {
     return this.messageRepository.save(createMessageInput);
   }
 
-  findAll() {
-    return this.messageRepository.find();
+  findAllByClassroom(classroomId: number) {
+    return this.messageRepository.find({
+      where: { classroom: { id: classroomId } },
+      relations: { user: true, classroom: true },
+    });
   }
 }

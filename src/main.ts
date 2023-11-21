@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,11 +13,18 @@ async function bootstrap() {
     )
     .setVersion('0.1')
     .addBearerAuth()
-    .addTag('users', `Usuários são utilizados para muitas coisas`)
+    .addTag('users', `Usuários são utilizados para acessar os recursos`)
+    .addTag('classrooms', `Use turmas para organizar os usuários.`)
+    .addTag(
+      'messages',
+      `Mensagens que um usuário pode enviar dentro de uma turma.`,
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
+
+  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(3000);
 }

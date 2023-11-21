@@ -1,0 +1,65 @@
+mutation CreateUser {
+  user(createUserDto: { name: "João", classroom: { id: 2 } }) {
+    id
+    name
+  }
+}
+
+mutation CreateClassroom {
+  classroom(createClassroomDto: { name: "TSI2023" }) {
+    id
+    name
+  }
+}
+
+mutation CreateMessage {
+  message(
+    createMessageInput: {
+      content: "Teste"
+      user: { id: 2 }
+      classroom: { id: 3 }
+    }
+  ) {
+    id
+    content
+    classroom {
+      id
+    }
+    user {
+      id
+    }
+  }
+}
+
+query ListUsers {
+  users {
+    id
+    name
+    classroom {
+      id
+      name
+    }
+  }
+}
+
+query ListClassrooms {
+  classrooms {
+    id
+    name
+  }
+}
+
+query ListMessagesByClassroom {
+  messages(classroomId: 3) {
+    id
+    content
+    classroom {
+      id
+      name
+    }
+    user {
+      id
+      name
+    }
+  }
+}
